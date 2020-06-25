@@ -1,2 +1,3 @@
 # stocks-robot
-A simple robot to get the values of Brazilian stocks
+
+A simple nodeJS robot to get the values of Brazilian stocks
