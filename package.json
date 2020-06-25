@@ -6,11 +6,12 @@
   "author": "Victor Costa",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "dependencies": {
     "@babel/core": "^7.10.3",
+    "@babel/plugin-transform-runtime": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
     "@babel/register": "^7.10.3",
     "@babel/runtime": "^7.10.3",
@@ -20,7 +21,6 @@
     "puppeteer": "^4.0.1"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.10.3",
     "nodemon": "^2.0.4"
   }
 }
