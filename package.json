@@ -1,0 +1,26 @@
+{
+  "name": "stocks-robot",
+  "version": "1.0.0",
+  "description": "A simple robot to get stocks value",
+  "main": "index.js",
+  "author": "Victor Costa",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/register": "^7.10.3",
+    "@babel/runtime": "^7.10.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "memory-cache": "^0.2.0",
+    "puppeteer": "^4.0.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.10.3",
+    "nodemon": "^2.0.4"
+  }
+}
