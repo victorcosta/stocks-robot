@@ -1,7 +1,7 @@
 {
   "name": "stocks-robot",
   "version": "1.0.0",
-  "description": "A simple robot to get stocks value",
+  "description": "A simple robot to get the values of Brazilian stocks",
   "main": "index.js",
   "author": "Victor Costa",
   "license": "MIT",

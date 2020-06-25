@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+import puppeteer from 'puppeteer';
 
 const getStockValue = async (stockName) => {
   const browser = await puppeteer.launch();
@@ -8,36 +8,34 @@ const getStockValue = async (stockName) => {
   try {
     const query = await page.evaluate(() => {
       const date = new Date();
-      const value = document.querySelector(".IsqQVc.NprOob.XcVN5d").innerHTML;
-      const companyName = document.querySelector(".oPhL2e").innerHTML;
+
+      const value = document.querySelector('.IsqQVc.NprOob.XcVN5d').innerHTML;
+
+      const companyName = document.querySelector('.oPhL2e').innerHTML;
+
       const stringDate = document
-        .querySelector(".TgMHGc")
-        .querySelectorAll("span")[1]
-        .innerText.replace("·", "")
-        .replace(" BRT", "")
-        .replace(" de ", "")
-        .replace(".", `${date.getFullYear()} `)
+        .querySelector('.TgMHGc')
+        .querySelectorAll('span')[1]
+        .innerText.replace('·', '')
+        .replace(' BRT', '')
+        .replace(' de ', '')
+        .replace('.', `${date.getFullYear()} `)
         .trim();
 
       const uptdatedAt = new Date(stringDate).toISOString();
 
-      const marketStatus = document
-        .querySelector(".TgMHGc")
-        .querySelectorAll("span")[0]
-        .innerText.replace(": ", "");
+      const variationString = document.querySelector('.WlRRw.IsqQVc').querySelectorAll('span')[1]
+        .ariaLabel;
 
-      const variationString = document
-        .querySelector(".WlRRw.IsqQVc")
-        .querySelectorAll("span")[1].ariaLabel;
-
-      const variation = variationString.split(" ");
+      const variation = variationString.split(' ');
 
       let variationPercentage = variation[0];
 
-      if (variation[0] === "Aumentou") {
+      if (variation[0] === 'Aumentou') {
         variationPercentage = `+${variation[1]}`;
       }
-      if (variation[0] === "Diminuiu") {
+
+      if (variation[0] === 'Diminuiu') {
         variationPercentage = `-${variation[1]}`;
       }
 
@@ -45,19 +43,16 @@ const getStockValue = async (stockName) => {
         value,
         companyName,
         variationPercentage,
-        marketStatus,
-        uptdatedAt,
+        uptdatedAt
       };
     });
+
     const stockValue = {
       stock: stockName,
       companyName: query.companyName,
-      stockValue: parseFloat(
-        query.value.replace(".", "").replace(",", ".")
-      ).toFixed(2),
+      stockValue: parseFloat(query.value.replace('.', '').replace(',', '.')).toFixed(2),
       variation: query.variationPercentage,
-      marketStatus: query.marketStatus,
-      uptdatedAt: query.uptdatedAt,
+      uptdatedAt: query.uptdatedAt
     };
 
     return stockValue;

@@ -1,12 +1,12 @@
-import express, { json } from "express";
+import express, { json } from 'express';
+import cors from 'cors';
+import http from 'http';
 
-import cors from "cors";
-import cache from "./middleware/cache";
-
-import routes from "./routes";
+import cache from './middleware/cache';
+import routes from './routes';
 
 const app = express();
-const server = require("http").Server(app);
+const server = http.Server(app);
 
 app.use(cors());
 app.use(json());

@@ -1,13 +1,13 @@
-require("@babel/register")({
-  presets: ["@babel/preset-env"],
+require('@babel/register')({
+  presets: ['@babel/preset-env'],
   plugins: [
     [
-      "@babel/plugin-transform-runtime",
+      '@babel/plugin-transform-runtime',
       {
-        regenerator: true,
-      },
-    ],
-  ],
+        regenerator: true
+      }
+    ]
+  ]
 });
 
-module.exports = require("./src/App.js");
+module.exports = require('./src/App.js');

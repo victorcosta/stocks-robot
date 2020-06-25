@@ -1,8 +1,8 @@
-import mcache from "memory-cache";
+import mcache from 'memory-cache';
 
 const cache = (duration) => {
   return (req, res, next) => {
-    let key = "__express__" + req.originalUrl || req.url;
+    let key = '__express__' + req.originalUrl || req.url;
     let cachedBody = mcache.get(key);
     if (cachedBody) {
       res.send(cachedBody);
@@ -17,4 +17,5 @@ const cache = (duration) => {
     }
   };
 };
+
 export default cache;
