@@ -1,6 +1,6 @@
 import getStockValue from '../services/StockValue';
 
-const index = async (req, res) => {
+const index = async (_, res) => {
   const stockValue = Array();
   stockValue.push(await getStockValue('IBOV'));
   stockValue.push(await getStockValue('ITUB4'));

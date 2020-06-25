@@ -5,6 +5,7 @@ const getStockValue = async (stockName) => {
   const page = await browser.newPage();
   const url = `https://www.google.com/search?rlz=1C5CHFA_enBR882BR883&sxsrf=ALeKk01BFCt0Ei5p0AXzIVGLnaVMThw_tw%3A1593059348371&ei=FCj0XoWfFsfU5OUPj6K_6AU&q=${stockName}&oq=${stockName}&gs_lcp=CgZwc3ktYWIQAzIFCAAQsQMyBggAEAcQHjIGCAAQBxAeMgYIABAHEB4yAggAMgYIABAHEB4yBggAEAcQHjIGCAAQBxAeMgYIABAHEB4yBggAEAcQHjoECCMQJzoICAAQBxAKEB5Q8hNY8hNg_hVoAHAAeACAAWSIAb0BkgEDMS4xmAEAoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwiF-cLEkJzqAhVHKrkGHQ_RD10Q4dUDCAw&uact=5`;
   await page.goto(url);
+
   try {
     const query = await page.evaluate(() => {
       const date = new Date();
