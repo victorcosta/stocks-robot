@@ -74,8 +74,6 @@ const getCurrencyValue = async (currencyName) => {
     currencyValue.value = parseFloat(bid).toFixed(2);
     currencyValue.uptdatedAt = create_date;
   } catch (error) {
-    console.log(error);
-
     throw new error();
   }
 
