@@ -23,7 +23,7 @@ const view = async (req, res) => {
     const stockValue = await getStockValue(stockName);
     return res.json(stockValue);
   } catch (error) {
-    return res.status(501).json({ error: 'Internal Server Error' });
+    return res.status(400).json({ error: 'Stock not exists' });
   }
 };
 
