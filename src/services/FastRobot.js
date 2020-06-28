@@ -58,7 +58,7 @@ const getStockValue = async (stockName) => {
 };
 
 const getCurrencyValue = async (currencyName) => {
-  const url = `http://economia.awesomeapi.com.br/json/all/${currencyName}-BRL`;
+  const url = `http://economia.awesomeapi.com.br/json/all/${currencyName.toUpperCase()}-BRL`;
   const currencyValue = {
     currency: null,
     name: null,
