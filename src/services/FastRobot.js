@@ -7,7 +7,7 @@ const getStockValue = async (stockName) => {
   const stockValue = {
     stock: stockName.toUpperCase(),
     companyName: null,
-    stockValue: null,
+    value: null,
     variation: null,
     uptdatedAt: null
   };
@@ -47,7 +47,7 @@ const getStockValue = async (stockName) => {
     const uptdatedAt = new Date(stringDate).toISOString();
 
     stockValue.companyName = companyName;
-    stockValue.stockValue = valuation;
+    stockValue.value = valuation;
     stockValue.variation = variationPercentage;
     stockValue.uptdatedAt = uptdatedAt;
   } catch (error) {
