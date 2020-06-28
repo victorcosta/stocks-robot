@@ -10,14 +10,14 @@ const view = async (req, res) => {
   const { currencyName } = req.params;
 
   if (!currencyName) {
-    return res.status(400).json({ error: 'Currency not exists' });
+    return res.status(400).json({ error: 'Currency not found' });
   }
 
   try {
     const currencyValue = await getCurrencyValue(currencyName);
     return res.json(currencyValue);
   } catch (error) {
-    return res.status(501).json({ error: 'Internal Server Error' });
+    return res.status(400).json({ error: 'Currency not found' });
   }
 };
 

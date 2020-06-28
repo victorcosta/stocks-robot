@@ -16,14 +16,14 @@ const view = async (req, res) => {
   const { stockName } = req.params;
 
   if (!stockName) {
-    return res.status(400).json({ error: 'Stock not exists' });
+    return res.status(400).json({ error: 'Stock not found' });
   }
 
   try {
     const stockValue = await getStockValue(stockName);
     return res.json(stockValue);
   } catch (error) {
-    return res.status(400).json({ error: 'Stock not exists' });
+    return res.status(400).json({ error: 'Stock not found' });
   }
 };
 
