@@ -58,7 +58,8 @@ const getStockValue = async (stockName) => {
 };
 
 const getCurrencyValue = async (currencyName) => {
-  const url = `http://economia.awesomeapi.com.br/json/all/${currencyName.toUpperCase()}-BRL`;
+  const currency = currencyName.toUpperCase();
+  const url = `http://economia.awesomeapi.com.br/json/all/${currency}-BRL`;
   const currencyValue = {
     currency: null,
     name: null,
@@ -67,7 +68,7 @@ const getCurrencyValue = async (currencyName) => {
   };
   try {
     const { data } = await axios.get(url);
-    const { code, name, bid, create_date } = data[currencyName];
+    const { code, name, bid, create_date } = data[currency];
 
     currencyValue.currency = code;
     currencyValue.name = name;
