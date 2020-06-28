@@ -1,7 +1,7 @@
 import { getCurrencyValue } from '../services/FastRobot';
 
 const index = async (_, res) => {
-  const value = await getCurrencyValue('dolar');
+  const value = await getCurrencyValue('USD');
 
   return res.json(value);
 };

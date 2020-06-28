@@ -58,19 +58,24 @@ const getStockValue = async (stockName) => {
 };
 
 const getCurrencyValue = async (currencyName) => {
-  const url = `https://www.google.com/search?q=${currencyName}&rlz=1C5CHFA_enBR882BR883&oq=${currencyName}&aqs=chrome..69i57j0l7.3717j1j4&sourceid=chrome&ie=UTF-8`;
+  const url = `http://economia.awesomeapi.com.br/json/all/${currencyName}-BRL`;
   const currencyValue = {
-    currency: currencyName,
+    currency: null,
+    name: null,
     value: null,
     uptdatedAt: null
   };
   try {
     const { data } = await axios.get(url);
-    const $ = cheerio.load(data);
-    const value = $('.BNeawe.iBp4i.AP7Wnd').first().text().split(' ');
-    currencyValue.value = parseFloat(value[0].replace('.', '').replace(',', '.')).toFixed(2);
-    currencyValue.uptdatedAt = new Date().toISOString();
+    const { code, name, bid, create_date } = data[currencyName];
+
+    currencyValue.currency = code;
+    currencyValue.name = name;
+    currencyValue.value = parseFloat(bid).toFixed(2);
+    currencyValue.uptdatedAt = create_date;
   } catch (error) {
+    console.log(error);
+
     throw new error();
   }
 
