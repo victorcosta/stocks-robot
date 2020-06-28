@@ -49,7 +49,7 @@ const getStockValue = async (stockName) => {
     });
 
     const stockValue = {
-      stock: stockName,
+      stock: stockName.toUpperCase(),
       companyName: query.companyName,
       stockValue: parseFloat(query.value.replace('.', '').replace(',', '.')).toFixed(2),
       variation: query.variationPercentage,
@@ -64,4 +64,36 @@ const getStockValue = async (stockName) => {
   }
 };
 
-export default getStockValue;
+const getCurrencyValue = async (currencyName) => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  const url = `https://www.google.com/search?q=${currencyName}&rlz=1C5CHFA_enBR882BR883&oq=${currencyName}&aqs=chrome..69i57j0l7.3717j1j4&sourceid=chrome&ie=UTF-8`;
+  await page.goto(url);
+
+  try {
+    const query = await page.evaluate(() => {
+      const value = document.querySelector('.a61j6.vk_gy.vk_sh.Hg3mWc').value;
+
+      const uptdatedAt = new Date().toISOString();
+
+      return {
+        value,
+        uptdatedAt
+      };
+    });
+
+    const currencyValue = {
+      currency: currencyName,
+      value: query.value,
+      uptdatedAt: query.uptdatedAt
+    };
+
+    return currencyValue;
+  } catch (error) {
+    throw new error();
+  } finally {
+    await browser.close();
+  }
+};
+
+export { getStockValue, getCurrencyValue };

@@ -1,9 +1,12 @@
 import { Router } from 'express';
-import { index, view } from './controller/Stocks';
+import { index as StocksIndex, view as StocksView } from './controller/Stocks';
+import { index as CurrencyIndex, view as CurrencyView } from './controller/Currency';
 
 const routes = Router();
 
-routes.get('/stocks', index);
-routes.get('/stocks/:stockName', view);
+routes.get('/currency', CurrencyIndex);
+routes.get('/currency/:currencyName', CurrencyView);
+routes.get('/stocks', StocksIndex);
+routes.get('/stocks/:stockName', StocksView);
 
 export default routes;

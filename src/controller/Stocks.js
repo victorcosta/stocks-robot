@@ -1,4 +1,4 @@
-import getStockValue from '../services/StockValue';
+import { getStockValue } from '../services/FastRobot';
 
 const index = async (_, res) => {
   const stockValue = Array();
