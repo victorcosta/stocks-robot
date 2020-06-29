@@ -26,7 +26,7 @@ const getStockValue = async (stockName) => {
 
     const value = $('.BNeawe.iBp4i.AP7Wnd').first().text().split(' ');
 
-    const valuation = parseFloat(value[0].replace('.', '').replace(',', '.')).toFixed(2);
+    const valuation = parseFloat(value[0]).toFixed(2);
 
     const valueVariation = parseFloat(value[1].replace(',', '.'));
 
